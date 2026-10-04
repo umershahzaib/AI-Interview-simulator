@@ -29,7 +29,8 @@ export function useScrollAnimation(options = {}) {
         observer.unobserve(element);
       }
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Options don't change, safe to exclude
 
   return { elementRef, isVisible };
 }

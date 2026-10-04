@@ -101,7 +101,10 @@ export async function generateCompletion(
   }
 
   try {
-    const messages: Array<{ role: string; content: string }> = [];
+    const messages: Array<{
+      role: "system" | "user" | "assistant";
+      content: string;
+    }> = [];
 
     if (systemPrompt) {
       messages.push({ role: "system", content: systemPrompt });
@@ -176,7 +179,10 @@ export async function generateStructuredResponse<T>(
         ? `${systemPrompt}\n\nIMPORTANT: You must respond with ONLY valid JSON. Do not include markdown code blocks, explanations, or any text outside the JSON object.`
         : "You must respond with ONLY valid JSON. Do not include markdown code blocks, explanations, or any text outside the JSON object.";
 
-      const messages: Array<{ role: string; content: string }> = [];
+      const messages: Array<{
+        role: "system" | "user" | "assistant";
+        content: string;
+      }> = [];
 
       if (enhancedSystemPrompt) {
         messages.push({ role: "system", content: enhancedSystemPrompt });
